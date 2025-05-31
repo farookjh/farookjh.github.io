@@ -87,6 +87,102 @@
     <nav>
       <a href="#">Home</a>
       <a href="#">Menu</a>
+      <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sweet Menu</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: #fff0f5;
+      color: #4b2e2e;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #ffb6c1;
+      padding: 20px;
+      text-align: center;
+      font-size: 2em;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    .menu {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .item {
+      background: #ffe4e1;
+      border: 2px solid #ff69b4;
+      border-radius: 15px;
+      padding: 20px;
+      margin: 15px;
+      width: 250px;
+      box-shadow: 4px 4px 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .item h3 {
+      margin: 10px 0;
+    }
+
+    .item p {
+      font-size: 0.9em;
+    }
+
+    .price {
+      font-weight: bold;
+      color: #d6336c;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>🍭 Sweet Menu</header>
+
+  <div class="menu">
+    <div class="item">
+      <h3>Chocolate Cake</h3>
+      <p>Rich and moist chocolate cake topped with ganache.</p>
+      <div class="price">$4.50</div>
+    </div>
+
+    <div class="item">
+      <h3>Strawberry Cheesecake</h3>
+      <p>Classic cheesecake with a fresh strawberry topping.</p>
+      <div class="price">$5.00</div>
+    </div>
+
+    <div class="item">
+      <h3>Macarons</h3>
+      <p>Assorted flavors: raspberry, vanilla, pistachio, lemon.</p>
+      <div class="price">$3.75</div>
+    </div>
+
+    <div class="item">
+      <h3>Donut Delight</h3>
+      <p>Glazed donuts filled with cream and topped with sprinkles.</p>
+      <div class="price">$2.25</div>
+    </div>
+
+    <div class="item">
+      <h3>Ice Cream Sundae</h3>
+      <p>Triple scoop with chocolate syrup, whipped cream & cherry.</p>
+      <div class="price">$4.95</div>
+    </div>
+  </div>
+
+</body>
+</html>
+
       <a href="#">About</a>
       <a href="#">Contact</a>
     </nav>
