@@ -113,7 +113,7 @@
       </div>
       <div class="item">
         <img src="https://via.placeholder.com/150" alt="Rainbow Gummies" />
-        <h4>Rainbow Gummies</h4>
+        <h4>Rainbow Gummiesy/</h4>
         <p>$3.49</p>
       </div>
     </div>
