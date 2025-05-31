@@ -83,7 +83,7 @@
 </head>
 <body>
   <header>
-    <h1>🍬 Sweet Treats</h1>
+    <h1>🍬YourLocalPharmacy </h1>
     <nav>
       <a href="#">Home</a>
       <a href="#">Menu</a>
