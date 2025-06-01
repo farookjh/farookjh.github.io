@@ -10,7 +10,7 @@
 <body class="bg-gradient-to-br from-indigo-100 to-blue-200 min-h-screen font-sans">
 
   <header class="bg-white shadow p-4 flex justify-between items-center">
-    <h1 class="text-2xl font-bold">🛒 Crypto Shop</h1>
+    <h1 class="text-2xl font-bold">YourSweetPlug</h1>
     <button id="connectButton" class="bg-indigo-600 text-white px-4 py-2 rounded">Connect Wallet</button>
   </header>
 
