@@ -286,7 +286,7 @@
       <select id="crypto-select" onchange="updateAddress()">
         <option value="BTC">Bitcoin (BTC)</option>
         <option value="ETH">Ethereum (ETH)</option>
-        <option value="USDT">Tether (USDT-ERC20)</option>
+        <option value="USDC">Tether (USDC-Polygon)</option>
       </select>
     </div>
 
@@ -299,8 +299,8 @@
   <script>
     const addresses = {
       BTC: 'bc1qngul6zaakt3uwsw8znpl4jvdl3dsxs8lxyj406',
-      ETH [ETH network]: '0x2E2Adfa870C79aA57c81c8B72ea0e4C81dA647E0',
-      USDC[polygon network]: '0x2E2Adfa870C79aA57c81c8B72ea0e4C81dA647E0'
+      ETH: '0x2E2Adfa870C79aA57c81c8B72ea0e4C81dA647E0',
+      USDC: '0x2E2Adfa870C79aA57c81c8B72ea0e4C81dA647E0'
     };
 
     function updateAddress() {
