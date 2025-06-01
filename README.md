@@ -2,37 +2,37 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Crypto Store - USDC (Polygon)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crypto Store - USDC on Polygon</title>
   <script src="https://cdn.jsdelivr.net/npm/ethers@6.7.0/dist/ethers.umd.min.js"></script>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gradient-to-br from-blue-50 to-purple-100 min-h-screen font-sans">
+<body class="bg-gradient-to-br from-gray-50 to-indigo-100 min-h-screen font-sans">
 
   <header class="bg-white shadow p-4 flex justify-between items-center">
-    <h1 class="text-2xl font-bold">🛒 Polygon Crypto Shop</h1>
-    <button id="connectButton" class="bg-purple-600 text-white px-4 py-2 rounded">Connect Wallet</button>
+    <h1 class="text-2xl font-bold">YourSweetPlug</h1>
+    <button id="connectButton" class="bg-indigo-600 text-white px-4 py-2 rounded">Connect Wallet</button>
   </header>
 
   <main class="max-w-4xl mx-auto p-6">
-<section class="mt-10">
-  <h2 class="text-xl font-semibold mb-2">📧 Email Confirmation</h2>
-  <form id="emailForm" class="bg-white p-4 rounded shadow">
-    <label class="block mb-2">
-      <span class="text-gray-700">Your Email</span>
-      <input type="email" id="emailInput" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded">
-    </label>
-    <p class="text-sm text-gray-500 mt-1">We'll email you your order summary after checkout.</p>
-  </form>
-</section>
-
     <section>
-      <h2 class="text-xl font-semibold mb-4">🛍️ Products</h2>
+      <h2 class="text-xl font-semibold mb-4">Products</h2>
       <div id="productList" class="grid grid-cols-1 sm:grid-cols-3 gap-4"></div>
     </section>
 
     <section class="mt-10">
-      <h2 class="text-xl font-semibold mb-2">🧾 Your Cart</h2>
+      <h2 class="text-xl font-semibold mb-2">Your Email</h2>
+      <form id="emailForm" class="bg-white p-4 rounded shadow">
+        <label class="block mb-2">
+          <span class="text-gray-700">Email Address</span>
+          <input type="email" id="emailInput" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded" />
+        </label>
+        <p class="text-sm text-gray-500 mt-1">We'll send your order confirmation here.</p>
+      </form>
+    </section>
+
+    <section class="mt-10">
+      <h2 class="text-xl font-semibold mb-2">Your Cart</h2>
       <div id="cart" class="bg-white p-4 rounded shadow">
         <p class="text-gray-500">Cart is empty.</p>
       </div>
@@ -51,7 +51,8 @@
       "function transfer(address to, uint256 amount) returns (bool)",
       "function decimals() view returns (uint8)"
     ];
-    const MY_WALLET = "0xYourWalletHere"; // Replace with your Polygon wallet address
+    const MY_WALLET = "0x2E2Adfa870C79aA57c81c8B72ea0e4C81dA647E0"; // Replace with your Polygon wallet address
+    const FORMSPREE_ENDPOINT = "https://formspree.io/f/yourformid"; // Replace with your Formspree endpoint
 
     const products = [
       { id: 1, name: 'Magic Hoodie', price: 5.00, emoji: '🧥' },
@@ -81,7 +82,7 @@
           <div class="text-5xl mb-2">${p.emoji}</div>
           <h3 class="font-semibold text-lg">${p.name}</h3>
           <p class="text-gray-500">$${p.price.toFixed(2)}</p>
-          <button class="mt-2 bg-purple-600 text-white px-3 py-1 rounded" onclick="addToCart(${p.id})">Add to Cart</button>
+          <button class="mt-2 bg-indigo-600 text-white px-3 py-1 rounded" onclick="addToCart(${p.id})">Add to Cart</button>
         `;
         container.appendChild(div);
       });
@@ -133,6 +134,9 @@
     async function checkout(totalUSD) {
       if (!signer) return alert('Please connect your wallet.');
 
+      const email = document.getElementById('emailInput').value;
+      if (!email) return alert('Please enter your email.');
+
       try {
         const usdc = new ethers.Contract(USDC_ADDRESS, USDC_ABI, signer);
         const decimals = await usdc.decimals();
@@ -140,10 +144,22 @@
 
         const tx = await usdc.transfer(MY_WALLET, amount);
         alert(`✅ Payment sent! TX hash: ${tx.hash}`);
+
+        // Send confirmation email
+        await fetch(FORMSPREE_ENDPOINT, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            email: email,
+            message: `New order of $${totalUSD.toFixed(2)} paid in USDC.\nTransaction Hash: ${tx.hash}`
+          })
+        });
+
         cart = [];
         renderCart();
+        document.getElementById('emailForm').reset();
       } catch (e) {
-        alert('❌ Transaction failed.');
+        alert('❌ Transaction or email failed.');
         console.error(e);
       }
     }
@@ -153,6 +169,7 @@
   </script>
 </body>
 </html>
+
 
 
      
