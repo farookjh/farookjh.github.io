@@ -3,19 +3,31 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Crypto Store - USDC (Polygon)</title>
   <script src="https://cdn.jsdelivr.net/npm/ethers@6.7.0/dist/ethers.umd.min.js"></script>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gradient-to-br from-blue-100 to-indigo-200 min-h-screen font-sans">
+<body class="bg-gradient-to-br from-blue-50 to-purple-100 min-h-screen font-sans">
 
   <header class="bg-white shadow p-4 flex justify-between items-center">
-    <h1 class="text-2xl font-bold">YourSweetPlug</h1>
-    <button id="connectButton" class="bg-indigo-600 text-white px-4 py-2 rounded">Connect Wallet</button>
+    <h1 class="text-2xl font-bold">🛒 Polygon Crypto Shop</h1>
+    <button id="connectButton" class="bg-purple-600 text-white px-4 py-2 rounded">Connect Wallet</button>
   </header>
 
-  <main class="max-w-4xl mx-auto p-4">
+  <main class="max-w-4xl mx-auto p-6">
+<section class="mt-10">
+  <h2 class="text-xl font-semibold mb-2">📧 Email Confirmation</h2>
+  <form id="emailForm" class="bg-white p-4 rounded shadow">
+    <label class="block mb-2">
+      <span class="text-gray-700">Your Email</span>
+      <input type="email" id="emailInput" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded">
+    </label>
+    <p class="text-sm text-gray-500 mt-1">We'll email you your order summary after checkout.</p>
+  </form>
+</section>
+
     <section>
-      <h2 class="text-xl font-semibold mb-4">🛒 Products</h2>
+      <h2 class="text-xl font-semibold mb-4">🛍️ Products</h2>
       <div id="productList" class="grid grid-cols-1 sm:grid-cols-3 gap-4"></div>
     </section>
 
@@ -25,15 +37,21 @@
         <p class="text-gray-500">Cart is empty.</p>
       </div>
     </section>
+
+    <section class="mt-10 text-center">
+      <a href="https://t.me/YourTelegramLink" target="_blank" class="inline-block mt-4 bg-blue-500 text-white px-6 py-3 rounded-full hover:bg-blue-600">
+        💬 Join Our Telegram
+      </a>
+    </section>
   </main>
 
   <script>
-    const USDC_ADDRESS = "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"; // Polygon USDC
+    const USDC_ADDRESS = "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"; // USDC on Polygon
     const USDC_ABI = [
       "function transfer(address to, uint256 amount) returns (bool)",
       "function decimals() view returns (uint8)"
     ];
-    const MY_WALLET = "0x2E2Adfa870C79aA57c81c8B72ea0e4C81dA647E0"; // 
+    const MY_WALLET = "0xYourWalletHere"; // Replace with your Polygon wallet address
 
     const products = [
       { id: 1, name: 'Magic Hoodie', price: 5.00, emoji: '🧥' },
@@ -45,7 +63,7 @@
     let signer;
 
     document.getElementById('connectButton').addEventListener('click', async () => {
-      if (!window.ethereum) return alert("Install MetaMask first.");
+      if (!window.ethereum) return alert("Please install MetaMask.");
       const provider = new ethers.BrowserProvider(window.ethereum);
       await provider.send("eth_requestAccounts", []);
       signer = await provider.getSigner();
@@ -63,7 +81,7 @@
           <div class="text-5xl mb-2">${p.emoji}</div>
           <h3 class="font-semibold text-lg">${p.name}</h3>
           <p class="text-gray-500">$${p.price.toFixed(2)}</p>
-          <button class="mt-2 bg-indigo-600 text-white px-3 py-1 rounded" onclick="addToCart(${p.id})">Add to Cart</button>
+          <button class="mt-2 bg-purple-600 text-white px-3 py-1 rounded" onclick="addToCart(${p.id})">Add to Cart</button>
         `;
         container.appendChild(div);
       });
@@ -135,6 +153,7 @@
   </script>
 </body>
 </html>
+
 
      
      
