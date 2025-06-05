@@ -7,7 +7,7 @@
   <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
   <script>
     (function(){
-      emailjs.init("A1jQbEhM9pMBjPJTv"); // Your EmailJS Public Key
+      emailjs.init("e9rCJA_TmotA7QPCg"); // Your EmailJS Public Key
     })();
   </script>
   <style>
