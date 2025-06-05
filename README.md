@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Your Sweet Plug</title>
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -46,10 +45,6 @@
       margin-top: 8px;
       border: none;
       border-radius: 6px;
-    }
-
-    .g-recaptcha {
-      margin-top: 20px;
     }
 
     button {
@@ -113,9 +108,6 @@
     <form id="signupForm" onsubmit="return handleSignup(event)">
       <label for="email">Email</label>
       <input type="email" id="email" name="email" required />
-
-      <div class="g-recaptcha" data-sitekey="6LdQEFcrAAAAAL_OwVLfQXvrSYZB3m3ohUE96ZEE"></div>
-
       <button type="submit">Sign Up</button>
     </form>
 
@@ -160,12 +152,6 @@
 
     function handleSignup(event) {
       event.preventDefault();
-      const recaptchaResponse = grecaptcha.getResponse();
-      if (!recaptchaResponse) {
-        alert("Please verify that you're not a robot.");
-        return false;
-      }
-
       const email = document.getElementById("email").value;
 
       fetch("https://formspree.io/f/your-form-id", {
@@ -200,8 +186,6 @@
 
 </body>
 </html>
-
-
 
 
 
