@@ -55,9 +55,9 @@
     const FORMSPREE_ENDPOINT = "https://formspree.io/f/yourformid"; // Replace with your Formspree endpoint
 
     const products = [
-      { id: 1, name: 'Magic Hoodie', price: 5.00, emoji: '🧥' },
-      { id: 2, name: 'Coffee Potion', price: 2.50, emoji: '☕' },
-      { id: 3, name: 'Enchanted Mug', price: 3.75, emoji: '🍵' },
+      { id: 1, name: 'Hoodie', price: 5.00, emoji: '🧥' },
+      { id: 2, name: 'Hoodie', price: 2.50, emoji: '☕' },
+      { id: 3, name: 'Hoodie', price: 3.75, emoji: '🍵' },
     ];
 
     let cart = [];
