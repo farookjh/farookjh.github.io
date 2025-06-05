@@ -204,7 +204,7 @@
         total_price: total,
       };
 
-      emailjs.send("service_puxgena", "template_y4s7y6q", params)
+      emailjs.send("service_puxgena", "template_4269orl", params)
         .then(function(response) {
           console.log("✅ Confirmation email sent!", response.status, response.text);
         }, function(error) {
