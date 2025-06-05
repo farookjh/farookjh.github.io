@@ -114,7 +114,7 @@
       <label for="email">Email</label>
       <input type="email" id="email" name="email" required />
 
-      <div class="g-recaptcha" data-sitekey="6LewBVcrAAAAAGLez2d0bFmCy-DMX3hS3wl_L5vL"></div>
+      <div class="g-recaptcha" data-sitekey="6LdQEFcrAAAAAL_OwVLfQXvrSYZB3m3ohUE96ZEE"></div>
 
       <button type="submit">Sign Up</button>
     </form>
