@@ -4,8 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Your Sweet Plug</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.6.4/dist/email.min.js"></script>
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script>
+    (function(){
+      emailjs.init("A1jQbEhM9pMBjPJTv"); // Your EmailJS Public Key
+    })();
+  </script>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -28,33 +32,65 @@
       overflow-y: auto;
       max-height: 90vh;
     }
-    h1, h2 { text-align: center; margin-bottom: 20px; }
-    label { display: block; margin-top: 15px; }
-    input[type="email"], input[type="password"] {
-      width: 100%; padding: 10px; margin-top: 8px;
-      border: none; border-radius: 6px;
+    h1, h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+    }
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 8px;
+      border: none;
+      border-radius: 6px;
     }
     button {
-      margin-top: 20px; width: 100%; padding: 12px;
-      background: #00c9a7; border: none; border-radius: 6px;
-      color: white; font-size: 16px; cursor: pointer;
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      background: #00c9a7;
+      border: none;
+      border-radius: 6px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
     }
-    button:hover { background: #00a894; }
-    .hidden { display: none; }
+    button:hover {
+      background: #00a894;
+    }
+    .hidden {
+      display: none;
+    }
     .wallet-info {
-      background: #0f172a; padding: 20px; border-radius: 8px; margin-top: 20px;
+      background: #0f172a;
+      padding: 20px;
+      border-radius: 8px;
+      margin-top: 20px;
     }
     .telegram {
-      text-align: center; margin-top: 20px;
+      text-align: center;
+      margin-top: 20px;
     }
     .telegram a {
-      color: #1da1f2; text-decoration: none; font-weight: bold;
+      color: #1da1f2;
+      text-decoration: none;
+      font-weight: bold;
     }
     .product {
-      border: 1px solid #444; padding: 15px; margin: 10px 0;
-      border-radius: 8px; background: #2d3748;
+      border: 1px solid #444;
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 8px;
+      background: #2d3748;
     }
-    .cart-total { margin-top: 20px; font-weight: bold; }
+    .cart-total {
+      margin-top: 20px;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
@@ -106,8 +142,6 @@
   </div>
 
   <script>
-    emailjs.init("A1jQbEhM9pMBjPJTv");
-
     let total = 0;
 
     function handleSignup(event) {
@@ -115,16 +149,15 @@
       const email = document.getElementById("email").value;
 
       emailjs.send("service_puxgena", "template_4269orl", {
-        to_email: email,
-        site_password: "plugaccess"
+        email: email
       })
       .then(function(response) {
-        alert("Password has been sent to your email!");
+        alert("✅ Password sent to your email.");
         document.getElementById("signupForm").classList.add("hidden");
         document.getElementById("passwordForm").classList.remove("hidden");
       }, function(error) {
-        alert("Email failed to send. Try again later.");
-        console.error("EmailJS error:", error);
+        alert("❌ Failed to send email.");
+        console.error(error);
       });
 
       return false;
