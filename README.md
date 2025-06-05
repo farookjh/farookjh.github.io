@@ -137,12 +137,12 @@
 
       <div class="wallet-info">
         <strong>Send USDC (Polygon) to:</strong><br />
-        <code>0xYourWalletAddressHere</code>
+        <code>0x2E2Adfa870C79aA57c81c8B72ea0e4C81dA647E0</code>
       </div>
 
       <div class="telegram">
         <p>Join our Telegram for updates:</p>
-        <a href="https://t.me/yourtelegram" target="_blank">@yourtelegram</a>
+        <a href="https://t.me/sweetplugs" target="_blank">@yourtelegram</a>
       </div>
     </div>
   </div>
